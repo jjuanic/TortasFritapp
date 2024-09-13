@@ -1,0 +1,19 @@
+{
+  "name": "sample-app",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.51",
+    "@types/angular-ui-router": "^1.1.40",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "1.7.x"
+  }
+}

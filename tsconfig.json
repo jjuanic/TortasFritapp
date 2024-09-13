@@ -1,0 +1,15 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outFile": "./scripts/app.js",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "none",
+        "moduleResolution": "node",
+        "target": "es5",
+        "lib": [
+            "es2017",
+            "dom"
+        ]
+    }
+}

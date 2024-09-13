@@ -4,7 +4,7 @@ module App {
         quantity: number;
         pricePerUnit: number;
         totalAmount: number;
-        order: OrderData;
-        product: ProductData;
+        order?: OrderData;
+        product?: ProductData;
     }
 }

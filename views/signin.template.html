@@ -1,0 +1,16 @@
+<h1>Sign In</h1>
+<form name="signInForm">
+<br>
+    <div class="form-floating mb-3">
+        <input type="text" id="email" ng-model="ctrl.user.email" class="form-control" placeholder="Email" required>
+        <label for="floatingInput">Email Address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" id="password" ng-model="ctrl.user.password" class="form-control" placeholder="Password" required>
+        <label for="floatingInput" class="form-label">Password</label>
+    </div>
+
+    <button ng-click="ctrl.signInUser()" class="btn btn-primary">
+        Sign-In
+    </button>        
+</form>

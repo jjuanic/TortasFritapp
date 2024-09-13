@@ -1,0 +1,28 @@
+<h1>Sign Up</h1>
+<form name="signUpForm">
+<br>
+    <div class="form-floating mb-3">
+        <input type="text" id="firstName" ng-model="ctrl.newItem.firstName" class="form-control" placeholder="First Name" required>
+        <label for="floatingInput">First Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" id="lastName" ng-model="ctrl.newItem.lastName" class="form-control" placeholder="Last Name" required>
+        <label for="floatingInput">Last Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" id="address" ng-model="ctrl.newItem.address" class="form-control" placeholder="Address" required>
+        <label for="floatingInput">Address (For now we are only available in Concepción del Uruguay)</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" id="email" ng-model="ctrl.newItem.email" class="form-control" placeholder="Email" required>
+        <label for="floatingInput">Email Address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" id="password" ng-model="ctrl.newItem.password" class="form-control" placeholder="Password" required>
+        <label for="floatingInput" class="form-label">Password</label>
+    </div>
+
+    <button ng-click="ctrl.signUpUser()" class="btn btn-primary">
+        Sign-Up
+    </button>        
+</form>

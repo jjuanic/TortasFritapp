@@ -1,20 +1,26 @@
-/// <reference path="controllers/ListController.ts"/>
-/// <reference path="controllers/DetailController.ts"/>
-/// <reference path="controllers/CategoryController.ts"/>
-/// <reference path="controllers/ProductController.ts"/>
-/// <reference path="services/items-service.ts"/>
-/// <reference path="services/category-service.ts"/>
+/// <reference path="controllers/signup-controller.ts"/>
+/// <reference path="controllers/signin-controller.ts"/>
+
+/// <reference path="services/order-service.ts"/>
+/// <reference path="services/orderline-service.ts"/>
+/// <reference path="services/stock-service.ts"/>
+/// <reference path="services/user-service.ts"/>
 /// <reference path="services/product-service.ts"/>
+/// <reference path="services/cookies-service.ts"/>
 
 (() => {
     const rootModule = angular.module("TortasApp", [
-        'ui.router'
+        'ui.router',
+        'ngCookies'
     ]);
 
     // Registrar el servicio en el módulo principal
-    rootModule.service('categoryService', App.CategoryService);
-    rootModule.service("itemsService", App.ItemsService)
-    rootModule.service("productService", App.ProductService)
+    rootModule.service('UserService', App.UserService);
+    rootModule.service("OrderService", App.OrderService);
+    rootModule.service("OrderlineService", App.OrderlineService);
+    rootModule.service("StockService", App.StockService);
+    rootModule.service("ProductService", App.ProductService);
+    rootModule.service("CookiesService", App.CookiesService);
 
     rootModule.config(($stateProvider: angular.ui.IStateProvider,
         $urlRouterProvider: angular.ui.IUrlRouterProvider) => {
@@ -27,68 +33,35 @@
         });
 
         $stateProvider.state({
-            name: 'list',
-            url: '/list',
-            templateUrl: 'views/list.template.html',
-            controller: App.ListController,
+            name: 'signup',
+            url: '/signup',
+            templateUrl: 'views/signup.template.html',
+            controller: App.SignupController,
             controllerAs: 'ctrl',
         });
 
         $stateProvider.state({
-            name: 'detail',
-            url: '/items/{itemId}',
-            templateUrl: 'views/detail.template.html',
-            controller: App.DetailController,
+            name: 'signin',
+            url: '/signin',
+            templateUrl: 'views/signin.template.html',
+            controller: App.SignInController,
             controllerAs: 'ctrl',
         });
 
-        
-        $stateProvider.state({
-            name: 'categories',
-            url: '/category',
-            templateUrl: 'views/category-template.html',
-            controller: App.CategoryController,
-            controllerAs: 'ctrl',
-        });
-
-        $stateProvider.state({
-            name: 'category-detail',
-            url: '/category/:itemId',
-            templateUrl: 'views/category-detail.html',
-            controller: App.CategoryController,
-            controllerAs: 'ctrl',
-            resolve: {
-                isEdit: ($stateParams: angular.ui.IStateParamsService) => {
-                    return !!$stateParams['itemId']; 
-                },
-                productId: ($stateParams: angular.ui.IStateParamsService) => {
-                    return $stateParams['itemId'] ? parseInt($stateParams['itemId'], 10) : null;
-                }
-            }
-        }); 
-
-        $stateProvider.state({
-            name: 'products',
-            url: '/products',
-            templateUrl: 'views/product-template.html',
-            controller: App.ProductController,
-            controllerAs: 'ctrl',
-        });
-
-        $stateProvider.state({
-            name: 'product-detail',
-            url: '/products/:itemId', // Acepta itemId como parámetro
-            templateUrl: 'views/product-detail.html',
-            controller: App.ProductController,
-            controllerAs: 'ctrl',
-            resolve: {
-                isEdit: ($stateParams: angular.ui.IStateParamsService) => {
-                    return !!$stateParams['itemId']; 
-                },
-                productId: ($stateParams: angular.ui.IStateParamsService) => {
-                    return $stateParams['itemId'] ? parseInt($stateParams['itemId'], 10) : null;
-                }
-            }
-        });        
+        // $stateProvider.state({
+        //     name: 'product-detail',
+        //     url: '/products/:itemId', // Acepta itemId como parámetro
+        //     templateUrl: 'views/product-detail.html',
+        //     controller: App.ProductController,
+        //     controllerAs: 'ctrl',
+        //     resolve: {
+        //         isEdit: ($stateParams: angular.ui.IStateParamsService) => {
+        //             return !!$stateParams['itemId']; 
+        //         },
+        //         productId: ($stateParams: angular.ui.IStateParamsService) => {
+        //             return $stateParams['itemId'] ? parseInt($stateParams['itemId'], 10) : null;
+        //         }
+        //     }
+        // });        
     });
 })();
